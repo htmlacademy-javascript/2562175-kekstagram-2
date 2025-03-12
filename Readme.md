@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Ольга Попкова](https://up.htmlacademy.ru/javascript-individual/2/user/2562175).
-* Наставник: `Неизвестно`.
+* Студент: [Ольга Попкова](https://up.htmlacademy.ru/javascript-individual/2/user/2562175) . 
+* Наставник:  [Виктория Никитина](https://htmlacademy.ru/profile/id1217273) .
 
 ---
 
