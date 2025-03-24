@@ -66,16 +66,16 @@ const getUniquePhoto = getUnique(MIN_PHOTOS, MAX_PHOTOS);
 const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
 //Функция, генерирующая один комментарий
-const getComment = () => {
-    return {
-        id: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS),
-        avatar: `img/avatar-${getRandomInteger(MIN_AVATARS, MAX_AVATARS)}.svg`,
-        massages: getRandomElement(MESSAGES),
-        name: getRandomElement(NAMES),
-    }
-};
+const getComment = () => ({
+    id: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS),
+    avatar: `img/avatar-${getRandomInteger(MIN_AVATARS, MAX_AVATARS)}.svg`,
+    massages: getRandomElement(MESSAGES),
+    name: getRandomElement(NAMES),
+}
+);
 
 //Функция, генерирующая массив
+
 /*const getComments = () => {
     const count = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
     const comments = []
@@ -85,13 +85,13 @@ const getComment = () => {
     return comments;
 };*/
 
-const getComments = () => Array.from({ length: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS)}, getComment);
+const getComments = () => Array.from({ length: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS) }, getComment);
 
 //функция, создающая одну фотографию (возвращает один объект)  //убрали return и фигурные скобки, добавили круглые скобки
-const getPhoto = (index) => ({
+const getPhoto = () => ({
     id: getUniqueId(),
     url: `photos/${getUniquePhoto()}.jpg`,
-    descriptions: DESCRIPTIONS[index],
+    descriptions: getRandomElement(DESCRIPTIONS),
     likes: getRandomInteger(MIN_LAKES, MAX_LAKES),
     comments: getComments()
 }
