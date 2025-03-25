@@ -1,4 +1,3 @@
-const massive = [];
 
 const NAMES = [
     'Виктория', 'Дарья', 'Алексей', 'Александра', 'Сергей', 'Ульяна', 'Патрик', 'Александр', 'Марина', 'Станислав',
@@ -16,91 +15,98 @@ const MESSAGES = [
 ];
 
 const DESCRIPTIONS = [
-    'Солнечный денёк.', 'Дорога к пляжу.', 'Шум прибоя.', 'Вот она-свобода!', 'Отдыхаем.', 'Черная молния.', 'На диете.',
+    'Санаторий "Железнодорожник".', 'Солнечный денёк.', 'Дорога к пляжу.', 'Шум прибоя.', 'Вот она-свобода!', 'Отдыхаем.', 'Черная молния.', 'На диете.',
     'Заряд бодрости.', 'Первым делом-самолёты.', 'Разложить всё по полочкам.', 'Прямо пойдешь-к морюшку придёшь.',
     'Зеленоглазое такси.', 'Радуга в тарелке.', 'Кексоролл.', 'Луностопы.', 'В погоне за мечтой.',
     'Вместе весело шагать по просторам и, конечно, припевать лучше хором.', 'Без комментариев.', 'Волшебные калоши.', 'Пальма финиковая - 8 штук.',
     'Все на ужин!', 'Как Магдалена, морская пена.', 'Я тебя съем.', 'Фаер-шоу в Турции.', 'Оставьте бегемота в покое!'
 ];
 
-const PHOTOS_COUNT = 25;
-
+const MIN_PHOTOS = 1;
+const MAX_PHOTOS = 25;
 const DESCRIPTIONS_COUNT = 25;
-
 const MIN_LAKES = 15;
-
 const MAX_LAKES = 200;
-
 const MIN_COMMENTS = 0;
-
 const MAX_COMMENTS = 30;
-
 const MIN_AVATARS = 1;
-
 const MAX_AVATARS = 6;
 
 //Функция получения случайного числа из заданного диапазона
+const getRandomInteger = (min, max) => {
+    const lowerLimit = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+    const upperLimit = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
+    const RandomInteger = Math.random() * (upperLimit - lowerLimit + 1) + lowerLimit;
+    return Math.floor(RandomInteger);
+};
 
-const getRandomInteger = (a, b) => {
-    const lower = Math.ceil(Math.min(a, b));
-    const upper = Math.floor(Math.max(a, b));
-    let previousResult = -1;
-    return () => {
-        const result = Math.floor(Math.random() * (upper - lower + 1) + lower);
-        if (previousResult !== result) {
-            previousResult = result;
-            return result;
+//Функция-генератор случайного положительного числа
+const getUnique = (min, max) => {
+    const previousValues = [];
+
+    return function () {
+        let currentValue = getRandomInteger(min, max);
+
+        if (previousValues.length >= (max - min + 1)) {
+            console.error(`Перебраны все числа из диапазона от${min} до${max}`);
+            return null;
         };
-        return result === upper ? lower : result + 1;
+
+        while (previousValues.includes(currentValue)) {
+            currentValue = getRandomInteger(min, max);
+        };
+        previousValues.push(currentValue);
+        return currentValue;
     };
 };
 
-//Вложенный объект Comments
+const getUniqueId = getUnique(MIN_PHOTOS, MAX_PHOTOS);
+const getUniquePhoto = getUnique(MIN_PHOTOS, MAX_PHOTOS);
 
-const createComment = () => {
-    let id = 1;
-    const indexMessageArr = getRandomInteger(0, MESSAGES.length - 1);
-    const indexNameArr = getRandomInteger(0, NAMES.length - 1);
-    //Возвращаемая функция
-    return () => {
-        const comment = {};
-        const idAvatar = getRandomInteger(MIN_AVATARS, MAX_AVATARS);
-        comment.id = id;
-        comment.avatar = `img/avatar-${idAvatar()}.svg`;
-        comment.message = `${MESSAGES[indexMessageArr()]}. ${MESSAGES[indexMessageArr()]}`;
-        comment.name = `${NAMES[indexNameArr()]}`;
-        id++;
-        return comment;
-    };
-};
+//Функция, возвращающая случайное значение из массива
+const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
-//Количество комментариев
+//Функция, генерирующая один комментарий
+const getComment = () => (
+    {
+        id: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS),
+        avatar: `img/avatar-${getRandomInteger(MIN_AVATARS, MAX_AVATARS)}.svg`,
+        massages: getRandomElement(MESSAGES),
+        name: getRandomElement(NAMES),
+    });
 
-const numComments = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
+//Функция, генерирующая массив
 
-//Количество лайков
+/*const getComments = () => {
+    const count = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
+    const comments = []
+    for (let i = 1; i <= count; i++) {
+        comments.push(getComment())
+    }
+    return comments;
+};*/
 
-const numLakes = getRandomInteger(MIN_LAKES, MAX_LAKES);
+const getComments = () => Array.from({ length: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS) }, getComment);
 
-//функция создания объекта
 
-const createPhoto = () => {
-    let id = 1;
-    return () => {
-        const photo = {};
-        photo.id = id;
-        photo.url = `photos/${id}.jpg`;
-        //Массив описаний
-        photo.descriptions = Array.from({ length: DESCRIPTIONS_COUNT }, createComment());
-        photo.lakes = numLakes();
-        //Массив комментариев
-        photo.comments = Array.from({ length: numComments() }, createComment());
-        id++;
-        return photo;
-    };
-};
-//Массив фотографий
+//функция, создающая одну фотографию (возвращает один объект)  //убрали return и фигурные скобки, добавили круглые скобки
 
-const photoArray = Array.from({ length: PHOTOS_COUNT }, createComment());
+const getPhoto = () => ({
+    id: getUniqueId(),
+    url: `photos/${getUniquePhoto()}.jpg`,
+    description: getRandomElement(DESCRIPTIONS),
+    likes: getRandomInteger(MIN_LAKES, MAX_LAKES),
+    comments: getComments()
+});
 
-console.log(photoArray);
+/*const createPhotos = () => {
+    const result = [];
+    for (let i = 1; i <= MAX_PHOTOS; i++) {
+        result.push(getPhoto())
+    }
+    return result;
+};*/
+
+const createPhotos = () => Array.from({ length: MAX_PHOTOS }, getPhoto);
+
+console.log(createPhotos())
