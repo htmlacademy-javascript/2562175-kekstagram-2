@@ -46,9 +46,24 @@
             li.classList.add('item');
             li.style.backgroundColor = color;
             li.textContent = color;
+            li.dataset.color = color;
+
+            // li.addEventListener('click', () => {
+            //     document.body.style.background = color
+            //})
+
             fragment.append(li)
-        }) 
+        })
         list.append(fragment)
+
+        list.addEventListener('click', ({ target }) => {
+            const cube = target.closest('.item');
+            if (cube) {
+                const currentColor = cube.dataset.color;
+                document.body.style.background = currentColor;
+            };
+
+        })
     </script>
 </body>
 
