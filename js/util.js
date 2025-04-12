@@ -1,15 +1,15 @@
 //Функция получения случайного числа из заданного диапазона
-const getRandomInteger = (min, max) => {
+export const getRandomInteger = (min, max) => {
     const lowerLimit = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
     const upperLimit = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
     const RandomInteger = Math.random() * (upperLimit - lowerLimit + 1) + lowerLimit;
     return Math.floor(RandomInteger);
 };
 
-export {getRandomInteger};
+// export {getRandomInteger};
 
 //Функция-генератор случайного положительного числа
-const getUnique = (min, max) => {
+export const getUnique = (min, max) => {
     const previousValues = [];
 
     return function () {
@@ -28,11 +28,11 @@ const getUnique = (min, max) => {
     };
 };
 
-export {getUnique};
+// export {getUnique};
 
 //Функция, возвращающая случайное значение из массива
-const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
+export const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
-export {getRandomElement};
+// export {getRandomElement};
 
 
