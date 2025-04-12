@@ -30,3 +30,4 @@ export const MIN_COMMENTS = 0;
 export const MAX_COMMENTS = 30;
 export const MIN_AVATARS = 1;
 export const MAX_AVATARS = 6;
+export const COMMENTS_STEP = 5;

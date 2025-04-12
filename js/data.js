@@ -8,7 +8,7 @@ const getUniquePhoto = getUnique(MIN_PHOTOS, MAX_PHOTOS);
 const getComment = () => ({
     id: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS),
     avatar: `img/avatar-${getRandomInteger(MIN_AVATARS, MAX_AVATARS)}.svg`,
-    massages: getRandomElement(MESSAGES),
+    message: getRandomElement(MESSAGES),
     name: getRandomElement(NAMES),
 });
 
