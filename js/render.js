@@ -12,7 +12,7 @@ const createCard = (id, url, description, comments, likes) => {
     imageTag.alt = description;
     cardElement.querySelector('.picture__comments').textContent = comments.length;
     cardElement.querySelector('.picture__likes').textContent = likes;
-    cardElement.dataset.id = id
+    cardElement.dataset.id = id;
 
     //  cardElement.addEventListener('click', () => {
     //      openModal({url, description, comments, likes});
@@ -37,6 +37,6 @@ picturesContainerTag.addEventListener('click', ({ target }) => {
         console.log(id);
         const photo = localPhotos.find((item) => item.id === id);
         openModal(photo)
-    }
-})
+    };
+});
 
