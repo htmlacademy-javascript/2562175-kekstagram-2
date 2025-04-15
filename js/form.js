@@ -2,6 +2,8 @@ import { isValid } from "./validation.js";
 
 const body = document.body;
 const photoUploadForm = document.querySelector('.img-upload__form');
+//const uploadFileControl=photoUploadForm.querySelector('#upload-file');
+const descriptionField = photoUploadForm.querySelector('.text__description');
 const photoUploadBtn = photoUploadForm.querySelector('.img-upload__input');
 const photoEditModal = photoUploadForm.querySelector('.img-upload__overlay');
 const photoBigPreview = photoUploadForm.querySelector('.img-upload__preview img');
@@ -48,14 +50,19 @@ document.addEventListener('keydown', (evt) => {
     };
 });
 
-
 photoUploadForm.addEventListener('submit', (evt) = {
     evt.preventDefault();
 
     if(isValid()) {
-        photoUploadForm.submit();
-    }else{
-        console.warn('Форма невалидна. Не отправляем.');
+    photoUploadForm.submit();
+}else {
+    console.warn('Форма невалидна. Не отправляем.');
+}
+});
+
+descriptionField.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        evt.stopPropagation();
     }
 });
 
