@@ -6,7 +6,7 @@ const closeButtonTag = modalTag.querySelector('.big-picture__cancel');
 const commentsTemplate = modalTag.querySelector('.social__comment');
 const commentsTag = modalTag.querySelector('.social__comments');
 const commentStatisticTag = modalTag.querySelector('.social__comment-shown-count');
-const totalCommentsTag = modalTag.querySelector('.social__comment-shown-count');
+const totalCommentsTag = modalTag.querySelector('.social__comment-total-count');
 const loaderTag = modalTag.querySelector('.comments-loader');
 const body = document.body;
 
@@ -50,8 +50,8 @@ const renderComments = () => {
         fragment.append(createComment(item));
         renderedComments++;
     });
-    commentsTag.append(fragment);
 
+    commentsTag.append(fragment);
     renderStatistic();
     renderLoader();
 };

@@ -31,3 +31,6 @@ export const MAX_COMMENTS = 30;
 export const MIN_AVATARS = 1;
 export const MAX_AVATARS = 6;
 export const COMMENTS_STEP = 5;
+export const MAX_TAGS = 5;
+export const MAX_DESCRIPTION = 140;
+export const HASHTAG_FORMULA = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/i;
