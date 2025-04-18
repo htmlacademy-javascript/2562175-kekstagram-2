@@ -2,7 +2,7 @@ import { isValid } from "./validation.js";
 
 const body = document.body;
 const photoUploadForm = document.querySelector('.img-upload__form');
-//const uploadFileControl=photoUploadForm.querySelector('#upload-file');
+const uploadFileControl = photoUploadForm.querySelector('#upload-file');
 const descriptionField = photoUploadForm.querySelector('.text__description');
 const photoUploadBtn = photoUploadForm.querySelector('.img-upload__input');
 const photoEditModal = photoUploadForm.querySelector('.img-upload__overlay');
@@ -11,36 +11,34 @@ const photoSmallPreviews = document.querySelectorAll('.effects__preview');
 const closeButton = photoUploadForm.querySelector('.img-upload__cancel');
 
 const openForm = () => {
-    document.addEventListener('DOMContentLoaded', () => {
-        photoUploadBtn.addEventListener('input', () => {
-            photoEditModal.classList.remove('hidden');
-            body.classList.add('modal-open');
-            const file = photoUploadBtn.files[0];
+    photoEditModal.classList.remove('hidden');
+    body.classList.add('modal-open');
+    const file = photoUploadBtn.files[0];
 
-            if (file && file.type.startsWith('image/')) {
-                const imageURL.createObjectURL(file);
-                photoBigPreview.src = imageUrl;
-                photoSmallPreviews.forEach((photoBigPreview) => {
-                    photoSmallPreview.style.backgroundImage = `url(${imageUrl})`;
-                });
-            } else {
-                console.warn('Файл не является изображением или не выбран');
-            }
+    if (file && file.type.startsWith('image/')) {
+        const imageURL = URL.createObjectURL(file);
+        photoBigPreview.src = imageURL;
+        photoSmallPreviews.forEach((photoSmallPreview) => {
+            photoSmallPreview.style.backgroundImage = `url(${imageURL})`;
         });
-    });
+    } else {
+        console.warn('Файл не является изображением или не выбран');
+    }
 };
 
 const closeForm = () => {
-    closeButton.addEventListener('click', () => {
-        photoEditModal.classList.add('hidden');
-        body.classList.remove('modal-open');
-        photoUploadBtn.value = '';
-        photoBigPreview.src = '';
-        photoSmallPreviews.forEach((photoSmallPreview) => {
-            photoSmallPreview.style.backgroundImage = '';
-        });
+    photoEditModal.classList.add('hidden');
+    body.classList.remove('modal-open');
+    photoUploadBtn.value = '';
+    photoBigPreview.src = '';
+    photoSmallPreviews.forEach((photoSmallPreview) => {
+        photoSmallPreview.style.backgroundImage = '';
     });
 };
+
+closeButton.addEventListener('click', () => {
+    closeForm()
+});
 
 document.addEventListener('keydown', (evt) => {
     if (evt.key === 'Escape') {
@@ -50,14 +48,14 @@ document.addEventListener('keydown', (evt) => {
     };
 });
 
-photoUploadForm.addEventListener('submit', (evt) = {
+photoUploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    if(isValid()) {
-    photoUploadForm.submit();
-}else {
-    console.warn('Форма невалидна. Не отправляем.');
-}
+    if (isValid()) {
+        photoUploadForm.submit();
+    } else {
+        console.warn('Форма невалидна. Не отправляем.');
+    }
 });
 
 descriptionField.addEventListener('keydown', (evt) => {
@@ -65,5 +63,9 @@ descriptionField.addEventListener('keydown', (evt) => {
         evt.stopPropagation();
     }
 });
+
+uploadFileControl.addEventListener('change', () => {
+    openForm();
+})
 
 export { openForm, closeForm };
