@@ -1,4 +1,4 @@
-export  const NAMES = [
+export const NAMES = [
     'Виктория', 'Дарья', 'Алексей', 'Александра', 'Сергей', 'Ульяна', 'Патрик', 'Александр', 'Марина', 'Станислав',
     'Елизавета', 'Валентина', 'Егор', 'Фёдор', 'Ольга', 'Владимир', 'Анна', 'Людмила', 'Зоя', 'Виктор',
     'Анатолий', 'Вадим', 'Светлана', 'Екатерина', 'Мария', 'Михаил', 'Иван', 'Илья', 'Дмитрий', 'Маргарита'
@@ -34,3 +34,11 @@ export const COMMENTS_STEP = 5;
 export const MAX_TAGS = 5;
 export const MAX_DESCRIPTION = 140;
 export const HASHTAG_FORMULA = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/i;
+
+export const Scale = {
+    MAX: 100,
+    MIN: 25,
+    STEP: 25
+};
+
+export const SCALE_DEFAULT = Scale.MAX;
