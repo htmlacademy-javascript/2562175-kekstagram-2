@@ -1,3 +1,5 @@
+import { MAX_DESCRIPTION, MAX_TAGS, HASHTAG_FORMULA } from "./constants.js";
+
 const photoUploadForm = document.querySelector('.img-upload__form');
 const descriptionField = photoUploadForm.querySelector('.text__description');
 const hashtagTag = photoUploadForm.querySelector('.text__hashtags');
@@ -14,7 +16,7 @@ const validateHashtags = (value) => {
     if (!value.trim()) {
         return true;
     }
-    const hashtag = getHashtags(value);
+    const hashtags = getHashtags(value);
     return hashtags.every((hashtag) => HASHTAG_FORMULA.test(hashtag));
 };
 
@@ -22,8 +24,8 @@ const checkHashtagsCount = (value) => {
     if (!value.trim()) {
         return true;
     }
-    const hashtag = getHashtags(value);
-    return hashtag.length < MAX_TAGS;
+    const hashtags = getHashtags(value);
+    return hashtags.length <= MAX_TAGS;
 };
 
 const checkHashtagUnique = (value) => {
