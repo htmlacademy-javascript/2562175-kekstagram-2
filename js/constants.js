@@ -42,3 +42,57 @@ export const Scale = {
 };
 
 export const SCALE_DEFAULT = Scale.MAX;
+
+export const EFFECTS = {
+    CHROME: 'chrome',
+    SEPIA: 'sepia',
+    MARVIN: 'marvin',
+    PHOBOS: 'phobos',
+    HEAT: 'heat',
+    NONE: 'none'
+}
+
+export const effectConfigs = {
+    [EFFECTS.CHROME]: {
+        range: { min: 0, max: 1 },
+        start: 1,
+        step: 0.1,
+        style: 'grayscale',
+        units: ''
+    },
+    [EFFECTS.SEPIA]: {
+        range: { min: 0, max: 1 },
+        start: 1,
+        step: 0.1,
+        style: 'sepia',
+        units: ''
+    },
+    [EFFECTS.MARVIN]: {
+        range: { min: 0, max: 100 },
+        start: 100,
+        step: 1,
+        style: 'invert',
+        units: '%'
+    },
+    [EFFECTS.PHOBOS]: {
+        range: { min: 0, max: 3 },
+        start: 3,
+        step: 0.1,
+        style: 'blur',
+        units: 'px'
+    },
+    [EFFECTS.HEAT]: {
+        range: { min: 0, max: 3 },
+        start: 3,
+        step: 0.1,
+        style: 'brightness',
+        units: ''
+    },
+    [EFFECTS.NONE]: {
+        range: { min: 0, max: 3 },
+        start: 3,
+        step: 0.1,
+        style: 'brightness',
+        units: ''
+    }
+};

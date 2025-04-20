@@ -1,3 +1,4 @@
+import { reset as resetEffect } from "./effects.js";
 import { reset as resetScale } from "./scale.js";
 import { isValid } from "./validation.js";
 
@@ -38,6 +39,7 @@ const closeForm = () => {
 
     photoUploadForm.reset();
     resetScale();
+    resetEffect()
 };
 
 closeButton.addEventListener('click', () => {
