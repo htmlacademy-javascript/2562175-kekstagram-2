@@ -50,7 +50,7 @@ export const EFFECTS = {
     PHOBOS: 'phobos',
     HEAT: 'heat',
     NONE: 'none'
-}
+};
 
 export const effectConfigs = {
     [EFFECTS.CHROME]: {
