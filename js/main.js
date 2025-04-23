@@ -3,6 +3,6 @@ import { render } from './render.js';
 import './form.js';
 
 
-//render(createPhotos());
+render(createPhotos());
 
-fetch('https://31.javascript.htmlacademy.pro/kekstagram/data.')
+//fetch('https://31.javascript.htmlacademy.pro/kekstagram/data.')
