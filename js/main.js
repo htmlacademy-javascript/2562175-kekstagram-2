@@ -1,8 +1,15 @@
 import { createPhotos } from './data.js';
 import { render } from './render.js';
 import './form.js';
+import { getData } from './api.js';
 
 
-render(createPhotos());
+//render(createPhotos());
 
-//fetch('https://31.javascript.htmlacademy.pro/kekstagram/data.')
+getData()
+  .then((photos) => {
+    render(photos)
+  })
+  .catch(() => {
+    console.log('error!!!!!!!!!!!!!!!!!')
+  });
