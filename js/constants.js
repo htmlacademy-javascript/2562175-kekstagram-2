@@ -100,4 +100,4 @@ export const effectConfigs = {
 export const Popups = {
   SUCCESS: 'success',
   ERROR: 'error'
-}
+};

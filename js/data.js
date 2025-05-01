@@ -1,15 +1,15 @@
-import { getRandomInteger,getUnique,getRandomElement } from './util.js';
-import {NAMES, MESSAGES, DESCRIPTIONS, MIN_PHOTOS, MAX_PHOTOS, DESCRIPTIONS_COUNT, MIN_LAKES, MAX_LAKES, MIN_COMMENTS, MAX_COMMENTS, MIN_AVATARS, MAX_AVATARS} from "./constants.js"
+import { getRandomInteger, getUnique, getRandomElement } from './util.js';
+import { NAMES, MESSAGES, DESCRIPTIONS, MIN_PHOTOS, MAX_PHOTOS, DESCRIPTIONS_COUNT, MIN_LAKES, MAX_LAKES, MIN_COMMENTS, MAX_COMMENTS, MIN_AVATARS, MAX_AVATARS } from './constants.js';
 
 const getUniqueId = getUnique(MIN_PHOTOS, MAX_PHOTOS);
 const getUniquePhoto = getUnique(MIN_PHOTOS, MAX_PHOTOS);
 
 //Функция, генерирующая один комментарий
 const getComment = () => ({
-    id: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS),
-    avatar: `img/avatar-${getRandomInteger(MIN_AVATARS, MAX_AVATARS)}.svg`,
-    message: getRandomElement(MESSAGES),
-    name: getRandomElement(NAMES),
+  id: getRandomInteger(MIN_COMMENTS, MAX_COMMENTS),
+  avatar: `img/avatar-${getRandomInteger(MIN_AVATARS, MAX_AVATARS)}.svg`,
+  message: getRandomElement(MESSAGES),
+  name: getRandomElement(NAMES),
 });
 
 //Функция, генерирующая массив
@@ -28,11 +28,11 @@ const getComments = () => Array.from({ length: getRandomInteger(MIN_COMMENTS, MA
 
 //функция, создающая одну фотографию (возвращает один объект)  //убрали return и фигурные скобки, добавили круглые скобки
 const getPhoto = () => ({
-    id: getUniqueId(),
-    url: `photos/${getUniquePhoto()}.jpg`,
-    description: getRandomElement(DESCRIPTIONS),
-    likes: getRandomInteger(MIN_LAKES, MAX_LAKES),
-    comments: getComments()
+  id: getUniqueId(),
+  url: `photos/${getUniquePhoto()}.jpg`,
+  description: getRandomElement(DESCRIPTIONS),
+  likes: getRandomInteger(MIN_LAKES, MAX_LAKES),
+  comments: getComments()
 });
 
 /*const createPhotos = () => {

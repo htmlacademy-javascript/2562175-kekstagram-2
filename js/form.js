@@ -1,10 +1,10 @@
-import { postData } from "./api.js";
-import { Popups } from "./constants.js";
-import { reset as resetEffect } from "./effects.js";
-import { removeEscapeControl, setEscapeControl } from "./escapeControl.js";
-import { showPopup } from "./popup.js";
-import { reset as resetScale } from "./scale.js";
-import { isValid } from "./validation.js";
+import { postData } from './api.js';
+import { Popups } from './constants.js';
+import { reset as resetEffect } from './effects.js';
+import { removeEscapeControl, setEscapeControl } from './escapeControl.js';
+import { showPopup } from '/popup.js';
+import { reset as resetScale } from './scale.js';
+import { isValid } from './validation.js';
 
 const body = document.body;
 const photoUploadForm = document.querySelector('.img-upload__form');
@@ -46,11 +46,11 @@ function closeForm() {
   photoUploadForm.reset();
   resetScale();
   resetEffect();
-};
+}
 
 closeButton.addEventListener('click', () => {
   closeForm();
-  removeEscapeControl()
+  removeEscapeControl();
 });
 
 photoUploadForm.addEventListener('submit', (evt) => {

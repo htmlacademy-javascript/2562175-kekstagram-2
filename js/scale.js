@@ -1,4 +1,4 @@
-import { Scale, SCALE_DEFAULT } from "./constants.js";
+import { Scale, SCALE_DEFAULT } from './constants.js';
 
 
 const scaleControlSmoller = document.querySelector('.scale__control--smaller');
@@ -9,24 +9,24 @@ const imagePreview = document.querySelector('.img-upload__preview img');
 let currentScale = SCALE_DEFAULT;
 
 const render = () => {
-    imagePreview.style.scale = `${currentScale}%`;
-    scaleControlValue.value = `${currentScale}%`;
-}
+  imagePreview.style.scale = `${currentScale}%`;
+  scaleControlValue.value = `${currentScale}%`;
+};
 
 const minimizePhoto = () => {
-    currentScale = currentScale - Scale.STEP >= Scale.MIN ? currentScale - Scale.STEP : Scale.MIN;
-    render();
+  currentScale = currentScale - Scale.STEP >= Scale.MIN ? currentScale - Scale.STEP : Scale.MIN;
+  render();
 };
 
 const maximizePhoto = () => {
-    currentScale = currentScale + Scale.STEP <= Scale.MAX ? currentScale + Scale.STEP : Scale.MAX;
-    render();
+  currentScale = currentScale + Scale.STEP <= Scale.MAX ? currentScale + Scale.STEP : Scale.MAX;
+  render();
 };
 
 scaleControlSmoller.addEventListener('click', minimizePhoto);
 scaleControlBigger.addEventListener('click', maximizePhoto);
 
 export const reset = () => {
-    currentScale = SCALE_DEFAULT;
-    render();
-}
+  currentScale = SCALE_DEFAULT;
+  render();
+};

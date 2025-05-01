@@ -3,13 +3,13 @@ import { render } from './render.js';
 import './form.js';
 import { getData } from './api.js';
 
-
 //render(createPhotos());
 
 getData()
   .then((photos) => {
-    render(photos)
+    render(photos);
   })
-  .catch(() => {
-    console.log('error!!!!!!!!!!!!!!!!!')
+  .catch((error) => {
+    console.log('error!!!!!!!!!!!!!!!!!');
+    //showErrorMessage(error.message);
   });

@@ -1,5 +1,5 @@
-import { COMMENTS_STEP } from "./constants.js";
-import { removeEscapeControl, setEscapeControl } from "./escapeControl.js";
+import { COMMENTS_STEP } from './constants.js';
+import { removeEscapeControl, setEscapeControl } from './escapeControl.js';
 
 const modalTag = document.querySelector('.big-picture');
 const bigImageTag = modalTag.querySelector('.big-picture__img img');
@@ -42,7 +42,7 @@ const renderLoader = () => {
     loaderTag.classList.remove('hidden');
   } else {
     loaderTag.classList.add('hidden');
-  };
+  }
 };
 
 const renderComments = () => {
@@ -70,12 +70,12 @@ export const openModal = ({ url, description, comments, likes }) => {
   commentsTag.innerHTML = '';
   render({ url, description, likes });
   totalCommentsTag.textContent = comments.length;
-  setEscapeControl(closeModal)
+  setEscapeControl(closeModal);
 };
 
 function closeModal() {
   showModal(false);
-};
+}
 
 closeButtonTag.addEventListener('click', () => {
   closeModal();
