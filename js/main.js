@@ -1,15 +1,14 @@
-import { createPhotos } from './data.js';
 import { render } from './render.js';
 import './form.js';
 import { getData } from './api.js';
-
-//render(createPhotos());
+import { showAlert } from './util.js';
+import { initFilters } from './filter.js';
 
 getData()
   .then((photos) => {
     render(photos);
+    initFilters(photos)
   })
-  .catch((error) => {
-    console.log('error!!!!!!!!!!!!!!!!!');
-    //showErrorMessage(error.message);
+  .catch(() => {
+    showAlert();
   });

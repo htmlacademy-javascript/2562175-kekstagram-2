@@ -7,10 +7,9 @@ export const getData = () => fetch('https://31.javascript.htmlacademy.pro/keksta
       throw new Error();
     }
     return response.json();
-
   });
 
-export const postData = (body) => fetch('https://31.javascript.htmlacademy.pro/kekstagram/1', {
+export const postData = (body) => fetch('https://31.javascript.htmlacademy.pro/kekstagram/', {
   method: 'POST',
   body,
 });
