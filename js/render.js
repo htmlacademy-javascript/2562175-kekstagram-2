@@ -5,6 +5,12 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 
 let localPhotos;
 
+const clear = () => {
+  document.querySelectorAll('.picture').forEach((item) => {
+    item.remove();
+  });
+};
+
 const createCard = (id, url, description, comments, likes) => {
   const cardElement = pictureTemplate.cloneNode(true);
   const imageTag = cardElement.querySelector('.picture__img');
@@ -22,6 +28,7 @@ const createCard = (id, url, description, comments, likes) => {
 };
 
 export const render = (photos) => {
+  clear();
   localPhotos = [...photos];
   const fragment = document.createDocumentFragment();
   photos.forEach(({ id, url, description, comments, likes }) => {
