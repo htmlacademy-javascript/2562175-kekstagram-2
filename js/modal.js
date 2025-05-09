@@ -1,4 +1,5 @@
-import { COMMENTS_STEP } from "./constants.js";
+import { COMMENTS_STEP } from './constants.js';
+import { removeEscapeControl, setEscapeControl } from './escapeControl.js';
 
 const modalTag = document.querySelector('.big-picture');
 const bigImageTag = modalTag.querySelector('.big-picture__img img');
@@ -14,69 +15,71 @@ let localComments = [];
 let renderedComments = 0;
 
 const showModal = (isShow = true) => {
-    if (isShow) {
-        modalTag.classList.remove('hidden');
-        body.classList.add('modal-open');
-    } else {
-        modalTag.classList.add('hidden');
-        body.classList.remove('modal-open');
-    }
+  if (isShow) {
+    modalTag.classList.remove('hidden');
+    body.classList.add('modal-open');
+  } else {
+    modalTag.classList.add('hidden');
+    body.classList.remove('modal-open');
+  }
 };
 
 const createComment = ({ avatar, name, message }) => {
-    const comment = commentsTemplate.cloneNode(true);
-    const avaImageTag = comment.querySelector('.social__picture');
-    avaImageTag.src = avatar;
-    avaImageTag.alt = name;
-    comment.querySelector('.social__text').textContent = message;
-    return comment;
+  const comment = commentsTemplate.cloneNode(true);
+  const avaImageTag = comment.querySelector('.social__picture');
+  avaImageTag.src = avatar;
+  avaImageTag.alt = name;
+  comment.querySelector('.social__text').textContent = message;
+  return comment;
 };
 
 const renderStatistic = () => {
-    commentStatisticTag.textContent = renderedComments;
+  commentStatisticTag.textContent = renderedComments;
 };
 
 const renderLoader = () => {
-    if (localComments.length) {
-        loaderTag.classList.remove('hidden');
-    } else {
-        loaderTag.classList.add('hidden');
-    };
+  if (localComments.length) {
+    loaderTag.classList.remove('hidden');
+  } else {
+    loaderTag.classList.add('hidden');
+  }
 };
 
 const renderComments = () => {
-    const fragment = document.createDocumentFragment();
-    localComments.splice(0, COMMENTS_STEP).forEach((item) => {
-        fragment.append(createComment(item));
-        renderedComments++;
-    });
+  const fragment = document.createDocumentFragment();
+  localComments.splice(0, COMMENTS_STEP).forEach((item) => {
+    fragment.append(createComment(item));
+    renderedComments++;
+  });
 
-    commentsTag.append(fragment);
-    renderStatistic();
-    renderLoader();
+  commentsTag.append(fragment);
+  renderStatistic();
+  renderLoader();
 };
 
 const render = ({ url, description, likes }) => {
-    bigImageTag.src = url;
+  bigImageTag.src = url;
 
-    renderComments();
+  renderComments();
 };
 
 export const openModal = ({ url, description, comments, likes }) => {
-    renderedComments = 0;
-    showModal();
-    localComments = [...comments];
-    commentsTag.innerHTML = '';
-    render({ url, description, likes });
-    totalCommentsTag.textContent = comments.length;
+  renderedComments = 0;
+  showModal();
+  localComments = [...comments];
+  commentsTag.innerHTML = '';
+  render({ url, description, likes });
+  totalCommentsTag.textContent = comments.length;
+  setEscapeControl(closeModal);
 };
 
-const closeModal = () => {
-    showModal(false);
-};
+function closeModal() {
+  showModal(false);
+}
 
 closeButtonTag.addEventListener('click', () => {
-    closeModal();
+  closeModal();
+  removeEscapeControl();
 });
 
 loaderTag.addEventListener('click', renderComments);

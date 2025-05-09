@@ -1,0 +1,18 @@
+//import { errorLoadDataTemplate } from "./util.js";
+
+export const getData = () => fetch('https://31.javascript.htmlacademy.pro/kekstagram/data')
+  .then((response) => {
+    if (!response.ok) {
+      console.log('@@@@@@@@@@@@@@');
+      throw new Error();
+    }
+    return response.json();
+
+  });
+
+export const postData = (body) => fetch('https://31.javascript.htmlacademy.pro/kekstagram/1', {
+  method: 'POST',
+  body,
+});
+
+
