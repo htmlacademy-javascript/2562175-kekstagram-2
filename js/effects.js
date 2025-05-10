@@ -46,7 +46,6 @@ effectLevelSlider.noUiSlider.on('update', () => {
 });
 
 effectContainer.addEventListener('change', ({ target }) => {
-  console.log(target.value);
   currentEffect = target.value;
   renderSlider();
   updateSlider();

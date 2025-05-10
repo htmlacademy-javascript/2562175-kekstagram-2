@@ -1,6 +1,6 @@
-import { Filters, RANDOM_COUNT } from "./constants.js";
-import { render } from "./render.js";
-import { debounce } from "./util.js";
+import { Filters, RANDOM_COUNT } from './constants.js';
+import { render } from './render.js';
+import { debounce } from './util.js';
 
 const imageFilters = document.querySelector('.img-filters');
 const filterForm = document.querySelector('.img-filters__form');

@@ -1,6 +1,5 @@
 import { Scale, SCALE_DEFAULT } from './constants.js';
 
-
 const scaleControlSmoller = document.querySelector('.scale__control--smaller');
 const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
