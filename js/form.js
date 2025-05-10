@@ -34,11 +34,9 @@ const openForm = () => {
     photoSmallPreviews.forEach((photoSmallPreview) => {
       photoSmallPreview.style.backgroundImage = `url(${imageURL})`;
     });
-  } else {
-    console.warn('Файл не является изображением или не выбран');
   }
   // });
-  // });
+  //});
 };
 
 function closeForm() {

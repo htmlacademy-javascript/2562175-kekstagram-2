@@ -20,10 +20,6 @@ const createCard = (id, url, description, comments, likes) => {
   cardElement.querySelector('.picture__likes').textContent = likes;
   cardElement.dataset.id = id;
 
-  //  cardElement.addEventListener('click', () => {
-  //      openModal({url, description, comments, likes});
-  //  })
-
   return cardElement;
 };
 
@@ -41,7 +37,6 @@ picturesContainerTag.addEventListener('click', ({ target }) => {
   const card = target.closest('.picture');
   if (card) {
     const id = Number(card.dataset.id);
-    console.log(id);
     const photo = localPhotos.find((item) => item.id === id);
     openModal(photo);
   }

@@ -57,7 +57,7 @@ const renderComments = () => {
   renderLoader();
 };
 
-const render = ({ url, description, likes }) => {
+const render = ({ url}) => {
   bigImageTag.src = url;
 
   renderComments();

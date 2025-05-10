@@ -7,7 +7,7 @@ import { initFilters } from './filter.js';
 getData()
   .then((photos) => {
     render(photos);
-    initFilters(photos)
+    initFilters(photos);
   })
   .catch(() => {
     showAlert();
