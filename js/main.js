@@ -1,8 +1,10 @@
 import { render } from './render.js';
-import './form.js';
+import { openForm } from './form.js';
 import { getData } from './api.js';
 import { showAlert } from './util.js';
 import { initFilters } from './filter.js';
+
+openForm();
 
 getData()
   .then((photos) => {

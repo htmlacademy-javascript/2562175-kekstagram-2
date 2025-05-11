@@ -21,22 +21,22 @@ const closeButton = photoUploadForm.querySelector('.img-upload__cancel');
 const canCloseForm = () => !(document.activeElement === descriptionField || document.activeElement === hashtagTag);
 
 const openForm = () => {
-  // document.addEventListener('DOMContentLoaded', () => {
-  // photoUploadInput.addEventListener('input', () => {
-  photoEditModal.classList.remove('hidden');
-  body.classList.add('modal-open');
-  const file = photoUploadInput.files[0];
-  setEscapeControl(closeForm, canCloseForm);
+  document.addEventListener('DOMContentLoaded', () => {
+    photoUploadInput.addEventListener('input', () => {
+      photoEditModal.classList.remove('hidden');
+      body.classList.add('modal-open');
+      const file = photoUploadInput.files[0];
+      setEscapeControl(closeForm, canCloseForm);
 
-  if (file && file.type.startsWith('image/')) {
-    const imageURL = URL.createObjectURL(file);
-    photoBigPreview.src = imageURL;
-    photoSmallPreviews.forEach((photoSmallPreview) => {
-      photoSmallPreview.style.backgroundImage = `url(${imageURL})`;
+      if (file && file.type.startsWith('image/')) {
+        const imageURL = URL.createObjectURL(file);
+        photoBigPreview.src = imageURL;
+        photoSmallPreviews.forEach((photoSmallPreview) => {
+          photoSmallPreview.style.backgroundImage = `url(${imageURL})`;
+        });
+      }
     });
-  }
-  // });
-  //});
+  });
 };
 
 function closeForm() {
