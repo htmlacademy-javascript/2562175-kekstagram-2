@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubes</title>
+    <style>
+        .container {
+            width: 700px;
+            margin: 100px auto 0;
+        }
+
+        .list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="list">
+            <!-- <li class="item" style="background-color: red;">red</li> -->
+        </ul>
+    </div>
+    <script>
+        const colors = ['red', 'blue', 'green', 'violet', 'orange', 'tomato', 'yellow', 'black'];
+        const list = document.querySelector('.list')
+        const fragment = document.createDocumentFragment();
+        colors.forEach((color) => {
+            const li = document.createElement('li');
+            li.classList.add('item');
+            li.style.backgroundColor = color;
+            li.textContent = color;
+            li.dataset.color = color;
+
+            // li.addEventListener('click', () => {
+            //     document.body.style.background = color
+            //})
+
+            fragment.append(li)
+        })
+        list.append(fragment)
+
+        list.addEventListener('click', ({ target }) => {
+            const cube = target.closest('.item');
+            if (cube) {
+                const currentColor = cube.dataset.color;
+                document.body.style.background = currentColor;
+            };
+
+        })
+    </script>
+</body>
+
+</html>
