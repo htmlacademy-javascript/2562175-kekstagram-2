@@ -1,4 +1,4 @@
-import { DEBOUNCE_DELAY, DELAY_TIME } from "./constants.js";
+import { DEBOUNCE_DELAY, DELAY_TIME } from './constants.js';
 
 const alertTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
 const body = document.body;

@@ -56,6 +56,7 @@ pristine.addValidator(
   checkHashtagUnique,
   'Хештеги не должны повторяться'
 );
+
 pristine.addValidator(
   descriptionField,
   validateDescription,
@@ -63,3 +64,6 @@ pristine.addValidator(
 );
 
 export const isValid = () => pristine.validate();
+export const resetPristine = () => {
+  pristine.reset();
+};

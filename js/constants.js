@@ -5,7 +5,6 @@ export const MAX_TAGS = 5;
 export const MAX_DESCRIPTION = 140;
 export const HASHTAG_FORMULA = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/i;
 
-
 export const Scale = {
   MAX: 100,
   MIN: 25,
