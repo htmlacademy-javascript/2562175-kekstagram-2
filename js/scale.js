@@ -8,7 +8,7 @@ const imagePreview = document.querySelector('.img-upload__preview img');
 let currentScale = SCALE_DEFAULT;
 
 const render = () => {
-  imagePreview.style.scale = `${currentScale}%`;
+  imagePreview.style.transform = `scale(${currentScale}%)`;
   scaleControlValue.value = `${currentScale}%`;
 };
 

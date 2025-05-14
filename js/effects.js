@@ -11,6 +11,14 @@ let currentEffect = EFFECTS.NONE;
 noUiSlider.create(effectLevelSlider, {
   range: { min: 0, max: 1 },
   start: 1,
+  format: {
+    to: function (value) {
+      return parseFloat(value);
+    },
+    from: function (value) {
+      return parseFloat(value);
+    },
+  },
   step: 0.1,
   connect: 'lower',
 });

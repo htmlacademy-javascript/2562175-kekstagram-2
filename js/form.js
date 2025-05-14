@@ -4,7 +4,7 @@ import { reset as resetEffect } from './effects.js';
 import { removeEscapeControl, setEscapeControl } from './escapeControl.js';
 import { showPopup } from './popup.js';
 import { reset as resetScale } from './scale.js';
-import { isValid } from './validation.js';
+import { isValid, resetPristine } from './validation.js';
 
 const body = document.body;
 const photoUploadForm = document.querySelector('.img-upload__form');
@@ -45,6 +45,7 @@ function closeForm() {
   photoUploadForm.reset();
   resetScale();
   resetEffect();
+  resetPristine();
 }
 
 closeButton.addEventListener('click', () => {

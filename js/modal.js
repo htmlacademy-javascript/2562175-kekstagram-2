@@ -9,6 +9,8 @@ const commentsTag = modalTag.querySelector('.social__comments');
 const commentStatisticTag = modalTag.querySelector('.social__comment-shown-count');
 const totalCommentsTag = modalTag.querySelector('.social__comment-total-count');
 const loaderTag = modalTag.querySelector('.comments-loader');
+const captionTag = modalTag.querySelector('.social__caption');
+const likesTag = modalTag.querySelector('.likes-count');
 const body = document.body;
 
 let localComments = [];
@@ -57,9 +59,10 @@ const renderComments = () => {
   renderLoader();
 };
 
-const render = ({ url}) => {
+const render = ({ url, description, likes }) => {
   bigImageTag.src = url;
-
+  captionTag.textContent = description;
+  likesTag.textContent = likes;
   renderComments();
 };
 
