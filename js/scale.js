@@ -1,6 +1,7 @@
 import { Scale, SCALE_DEFAULT } from './constants.js';
 
 const scaleControlSmaller = document.querySelector('.scale__control--smaller');
+
 const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
 const imagePreview = document.querySelector('.img-upload__preview img');

@@ -53,6 +53,7 @@ const renderComments = () => {
     fragment.append(createComment(item));
     renderedComments++;
   });
+
   commentsTag.append(fragment);
   renderStatistic();
   renderLoader();
