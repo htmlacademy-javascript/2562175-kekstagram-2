@@ -1,38 +1,19 @@
-//Функция получения случайного числа из заданного диапазона
-export const getRandomInteger = (min, max) => {
-    const lowerLimit = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-    const upperLimit = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
-    const RandomInteger = Math.random() * (upperLimit - lowerLimit + 1) + lowerLimit;
-    return Math.floor(RandomInteger);
+import { DEBOUNCE_DELAY, DELAY_TIME } from './constants.js';
+
+const alertTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
+const body = document.body;
+export const showAlert = () => {
+  const alert = alertTemplate.cloneNode(true);
+  body.append(alert);
+  setTimeout(() => {
+    alert.remove();
+  }, DELAY_TIME);
 };
 
-// export {getRandomInteger};
-
-//Функция-генератор случайного положительного числа
-export const getUnique = (min, max) => {
-    const previousValues = [];
-
-    return function () {
-        let currentValue = getRandomInteger(min, max);
-
-        if (previousValues.length >= (max - min + 1)) {
-            console.error(`Перебраны все числа из диапазона от${min} до${max}`);
-            return null;
-        };
-
-        while (previousValues.includes(currentValue)) {
-            currentValue = getRandomInteger(min, max);
-        };
-        previousValues.push(currentValue);
-        return currentValue;
-    };
+export const debounce = (callback, timeoutDelay = DEBOUNCE_DELAY) => {
+  let timeoutId;
+  return function () {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback(...arguments), timeoutDelay);
+  };
 };
-
-// export {getUnique};
-
-//Функция, возвращающая случайное значение из массива
-export const getRandomElement = (arr) => arr[getRandomInteger(0, arr.length - 1)];
-
-// export {getRandomElement};
-
-
