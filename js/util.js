@@ -10,10 +10,10 @@ export const showAlert = () => {
   }, DELAY_TIME);
 };
 
-export const debounce = (Callback, timeoutDelay = DEBOUNCE_DELAY) => {
+export const debounce = (callback, timeoutDelay = DEBOUNCE_DELAY) => {
   let timeoutId;
   return function () {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => Callback(...arguments), timeoutDelay);
+    timeoutId = setTimeout(() => callback(...arguments), timeoutDelay);
   };
 };

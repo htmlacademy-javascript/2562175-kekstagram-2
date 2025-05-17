@@ -1,6 +1,7 @@
 import { Scale, SCALE_DEFAULT } from './constants.js';
 
-const scaleControlSmoller = document.querySelector('.scale__control--smaller');
+const scaleControlSmaller = document.querySelector('.scale__control--smaller');
+
 const scaleControlBigger = document.querySelector('.scale__control--bigger');
 const scaleControlValue = document.querySelector('.scale__control--value');
 const imagePreview = document.querySelector('.img-upload__preview img');
@@ -22,8 +23,15 @@ const maximizePhoto = () => {
   render();
 };
 
-scaleControlSmoller.addEventListener('click', minimizePhoto);
-scaleControlBigger.addEventListener('click', maximizePhoto);
+const onSmallerClick = () => {
+  minimizePhoto();
+};
+
+const onBiggerClick = () => {
+  maximizePhoto();
+};
+scaleControlSmaller.addEventListener('click', onSmallerClick);
+scaleControlBigger.addEventListener('click', onBiggerClick);
 
 export const reset = () => {
   currentScale = SCALE_DEFAULT;

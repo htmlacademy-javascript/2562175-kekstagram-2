@@ -59,6 +59,10 @@ const renderComments = () => {
   renderLoader();
 };
 
+const onLoaderClick = () => {
+  renderComments();
+};
+
 const render = ({ url, description, likes }) => {
   bigImageTag.src = url;
   captionTag.textContent = description;
@@ -85,4 +89,4 @@ closeButtonTag.addEventListener('click', () => {
   removeEscapeControl();
 });
 
-loaderTag.addEventListener('click', renderComments);
+loaderTag.addEventListener('click', onLoaderClick);
